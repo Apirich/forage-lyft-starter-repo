@@ -1,25 +1,20 @@
-from abc import ABC, abstractmethod
-from datetime import date
-from enigne import Engine, CapuletEngine, WilloughbyEngine, SternmanEngine
-from battery import Battery, SpindlerBattery, NubbinBattery
+from serviceable import Serviceable
 
-class Car(ABC):
+from engine.capulet_engine import CapuletEngine
+from engine.willoughby_engine import WilloughbyEngine
+from engine.sternman_engine import SternmanEngine
+
+from battery.nubbin_battery import NubbinBattery
+from battery.spindler_battery import SpindlerBattery
+
+
+class Car(Serviceable):
     def __init__(self, current_date, last_service_date):
         self.current_date = current_date
         self.last_service_date = last_service_date
 
-    @abstractmethod
     def needs_service(self):
-        engine = Engine
-        battery =  Battery
-
-        # if(engine and battery): return True
-        # else: return False
-
-    def call_needs_service(self):
-        service = self.needs_service()
-        result = 'service.needs_service()'
-        return result
+        pass
 
 
 class CalliopeCar(Car):
@@ -29,9 +24,9 @@ class CalliopeCar(Car):
         self.last_service_mileage = last_service_mileage
 
     def needs_service(self):
-        engine = CapuletEngine
-        battery = SpindlerBattery
-        return 'bool'
+        engine = CapuletEngine(self.current_mileage, self.last_service_mileage)
+        battery = SpindlerBattery(self.current_date, self.last_service_date)
+        return 'boolEngine or boolBattery'
 
 
 class GlissadeCar(Car):
@@ -41,9 +36,9 @@ class GlissadeCar(Car):
         self.last_service_mileage = last_service_mileage
 
     def needs_service(self):
-        engine = WilloughbyEngine
-        battery = SpindlerBattery
-        return bool
+        engine = WilloughbyEngine(self.current_mileage, self.last_service_mileage)
+        battery = SpindlerBattery(self.current_date, self.last_service_date)
+        return 'boolEngine or boolBattery'
 
 
 class PalindromeCar(Car):
@@ -52,9 +47,9 @@ class PalindromeCar(Car):
         self.warning_light_on = warning_light_on
 
     def needs_service(self):
-        engine = SternmanEngine
-        battery = SpindlerBattery
-        return bool
+        engine = SternmanEngine(self.warning_light_on)
+        battery = SpindlerBattery(self.current_date, self.last_service_date)
+        return 'boolEngine or boolBattery'
 
 
 class RorschachCar(Car):
@@ -64,9 +59,9 @@ class RorschachCar(Car):
         self.last_service_mileage = last_service_mileage
 
     def needs_service(self):
-        engine = WilloughbyEngine
-        battery = NubbinBattery
-        return bool
+        engine = WilloughbyEngine(self.current_mileage, self.last_service_mileage)
+        battery = NubbinBattery(self.current_date, self.last_service_date)
+        return 'boolEngine or boolBattery'
 
 
 
@@ -77,7 +72,7 @@ class ThovexCar(Car):
         self.last_service_mileage = last_service_mileage
 
     def needs_service(self):
-        engine = CapuletEngine
-        battery = NubbinBattery
-        return 'bool'
+        engine = CapuletEngine(self.current_mileage, self.last_service_mileage)
+        battery = NubbinBattery(self.current_date, self.last_service_date)
+        return 'boolEngine or boolBattery'
 

@@ -1,10 +1,9 @@
-from datetime import date
-from car import Car, CalliopeCar, GlissadeCar, PalindromeCar, RorschachCar, ThovexCar
+from car import CalliopeCar, GlissadeCar, PalindromeCar, RorschachCar, ThovexCar
 
 def CarFactory():
-    CalliopeCar(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
-    GlissadeCar(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
-    PalindromeCar(current_date: date, last_service_date: date, warning_light_on: bool): Car
-    RorschachCar(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
-    ThovexCar(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
+    calliope = CalliopeCar(current_date, last_service_date, current_mileage, last_service_mileage)
+    glissade = GlissadeCar(current_date, last_service_date, current_mileage, last_service_mileage)
+    palindrome = PalindromeCar(current_date, last_service_date, warning_light_on)
+    rorschach = RorschachCar(current_date, last_service_date, current_mileage, last_service_mileage)
+    thovex = ThovexCar(current_date, last_service_date, current_mileage, last_service_mileage)
 
